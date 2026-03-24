@@ -29,6 +29,8 @@ int main() {
 	float pPerCapita2;
 	//Acima as variáveis para a Carta 2
 	
+    int opAtributo;
+    //Acima a variável para escolher o atributo a ser comparado
 	
 	printf("Criando cartas do Super Trunfo de países!\n");
 	printf("Para a carta número 1 vamos começar a inserir os dados\n");
@@ -116,18 +118,68 @@ int main() {
 	//Area e PIB decidi colocar .2f para que seja mais facil de visualizar os valores
 	printf("Número de Pontos Turísticos: %d\n", nPTuristico2);
 	//Inserindo dados do nivel aventureiro da carta 2
-	printf("Densidade Populacional: %f hab/km²\n", dPopulacional2);
-	printf("PIB per Capita: %f reais\n", pPerCapita2);
+	printf("Densidade Populacional: %.2f hab/km²\n", dPopulacional2);
+	printf("PIB per Capita: %.2f reais\n", pPerCapita2);
 
 	printf("Agora vamos comparar as cartas!\n");
-    printf("O atributo a ser escolhido será população.\n");
-    if(populacao1 > populacao2) {
-        printf("A Carta 1(%s) é a vencedora com uma população de %lu de habitantes!\n", cidade1, populacao1);
-    } else {
-        printf("A Carta 2(%s) é a vencedora com uma população de %lu de habitantes!\n", cidade2, populacao2);
+    printf("Insira o numero do atributo para comparação: ");
+    printf("1 - População\n");
+    printf("2 - Área\n");   
+    printf("3 - PIB\n");
+    printf("4 - Número de Pontos Turísticos\n");
+    printf("5 - Densidade Populacional\n");
+    scanf(" %d", &opAtributo);
+    //Acima será inserido o numero do atributo para comparação e o resultado será mostrado na tela
+
+    switch(opAtributo){
+        case 1:
+            if(populacao1 > populacao2){
+                printf("A Carta 1(%s) é a vencedora com uma população de %lu de habitantes!\n", cidade1, populacao1);
+            } else if(populacao2 > populacao1){
+                printf("A Carta 2(%s) é a vencedora com uma população de %lu de habitantes!\n", cidade2, populacao2);
+            } else {
+                printf("Empate! Ambas as cartas possuem a mesma população de %lu habitantes!\n", populacao1);
+            }
+            break;
+        case 2:
+            if(area1 > area2){
+                printf("A Carta 1(%s) é a vencedora com uma área de %.2f km²!\n", cidade1, area1);
+            } else if(area2 > area1){
+                printf("A Carta 2(%s) é a vencedora com uma área de %.2f km²!\n", cidade2, area2);
+            } else {
+                printf("Empate! Ambas as cartas possuem a mesma área de %.2f km²!\n", area1);
+            }
+            break;
+        case 3: 
+            if(pib1 > pib2){
+                printf("A Carta 1(%s) é a vencedora com um PIB de %.2f bilhões de reais!\n", cidade1, pib1);
+            } else if(pib2 > pib1){
+                printf("A Carta 2(%s) é a vencedora com um PIB de %.2f bilhões de reais!\n", cidade2, pib2);
+            } else {
+                printf("Empate! Ambas as cartas possuem o mesmo PIB de %.2f bilhões de reais!\n", pib1);
+            }
+            break;
+        case 4:
+            if(nPTuristico1 > nPTuristico2){
+                printf("A Carta 1(%s) é a vencedora com %d pontos turísticos!\n", cidade1, nPTuristico1);
+            } else if(nPTuristico2 > nPTuristico1){
+                printf("A Carta 2(%s) é a vencedora com %d pontos turísticos!\n", cidade2, nPTuristico2);
+            } else {
+                printf("Empate! Ambas as cartas possuem o mesmo número de pontos turísticos: %d!\n", nPTuristico1);
+            }
+            break;
+        case 5:
+            if(dPopulacional1 < dPopulacional2){
+                printf("A Carta 1(%s) é a vencedora com uma densidade populacional de %.2f hab/km²!\n", cidade1, dPopulacional1);
+            } else if(dPopulacional2 < dPopulacional1){
+                printf("A Carta 2(%s) é a vencedora com uma densidade populacional de %.2f hab/km²!\n", cidade2, dPopulacional2);
+            } else {
+                printf("Empate! Ambas as cartas possuem a mesma densidade populacional de %.2f hab/km²!\n", dPopulacional1);
+            }
+            break;
+        default:
+            printf("Opção inválida!");
     }
-	//Inserindo a comparação entre as cartas, nesse caso escolhi comparar o atributo população, mas poderia ser qualquer outro atributo como área, PIB, pontos turísticos, etc. O importante é mostrar a comparação entre os atributos das cartas para mostrar qual é a melhor carta de acordo com o atributo escolhido.
-	return 0;
-	
-	 
+
+    return 0;
 }
